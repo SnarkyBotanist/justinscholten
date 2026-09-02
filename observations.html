@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore field observations from iNaturalist.">
+  <title>Field Observations | Justin Scholten</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css?v=20260831-3">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="js/config.js?v=20260831-3" defer></script>
+  <script src="js/inaturalist.js?v=20260831-3" defer></script>
+  <script src="js/observations-page.js?v=20260831-3" defer></script>
+  <script src="js/main.js?v=20260831-3" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="index.html">Justin Scholten, PhD</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <a href="index.html#about">About</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#publications">Publications</a>
+      <a class="active" href="observations.html">Observations</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section observations-hero">
+      <p class="eyebrow">FIELD NOTES / INATURALIST</p>
+      <h1>Explore field observations.</h1>
+      <p>
+        Search and filter recent observation history. Click on each photo for more details!
+      </p>
+    </section>
+
+    <section class="section observation-browser">
+      <div class="browser-toolbar">
+        <label>
+          <span>Search</span>
+          <input id="obs-search" type="search" placeholder="Scientific or common name">
+        </label>
+
+        <label>
+          <span>Group</span>
+          <select id="obs-group">
+            <option value="all">All groups</option>
+            <option value="Plantae">Plants</option>
+            <option value="Fungi">Fungi</option>
+            <option value="Animalia">Animals</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Year</span>
+          <select id="obs-year">
+            <option value="all">All years</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Sort</span>
+          <select id="obs-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="name">Taxon A–Z</option>
+            <option value="random">Random</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="browser-status">
+        <p id="obs-count">Loading observations…</p>
+        <button id="shuffle-button" class="text-button" type="button">Shuffle visible</button>
+      </div>
+
+      <div id="observations-grid" class="inat-grid inat-grid-browser">
+        <div class="gallery-placeholder">Loading iNaturalist observations…</div>
+      </div>
+
+      <div class="load-more-wrap">
+        <button id="load-more" class="button button-secondary" type="button">Show more</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="observation-dialog" class="observation-dialog">
+    <button class="dialog-close" type="button" aria-label="Close observation details">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <span>© <span id="current-year"></span> Justin Scholten</span>
+    <div>
+      <a id="inat-profile-link" href="https://www.inaturalist.org/" target="_blank" rel="noopener">iNaturalist ↗</a>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+</body>
+</html>
